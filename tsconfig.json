@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "declaration": true,
+    // babel 已经生成js， 这里值生成.d.ts文件即可
+    "emitDeclarationOnly": true,
+    "exactOptionalPropertyTypes": true, // 可选属性必须赋予明确的值，不可以赋值 undefined
+    // "declarationDir": "./src",
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "allowUnreachableCode": false,
+    "alwaysStrict": true,
+  },
+  "files": ["src/**"],
+  "include": [
+    "src/"
+  ],
+  "exclude": ["src/**.d.ts"]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "tanqq-rollup-pack",
+  "version": "1.0.1",
+  "description": "",
+  "exports": {
+    ".": {
+      "require": "./dist/index.ts",
+      "import": "./dist/es/index.ts"
+    }
+  },
+  "type": "module",
+  "main": "dist/index.ts",
+  "module": "dist/es/index.ts",
+  "types": "",
+  "directories": {},
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "npm run test && npm run build:all && npm run ts",
+    "build": "babel --out-dir dist/es --extensions .ts src",
+    "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly",
+    "build:tsup": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "jest",
+    "clean": "rimraf -rf ./dist",
+    "build:clean:all": "rimraf -rf node_modules",
+    "build:cjs": "rollup ./dist/es/index.js --dir ./dist/ --format cjs",
+    "build:all": "npm run clean &&  npm run build &  npm run build:cjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "core-js": "^3.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.12.13",
+    "@babel/core": "7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.17.12",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/jest": "^27.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.7.1",
+    "rollup": "^3.19.1",
+    "tsup": "^6.6.3",
+    "typescript": "^4.8.0"
+  },
+  "engines": {
+    "node": ">=14.16.1"
+  }
+}
