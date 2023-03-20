@@ -46,4 +46,5 @@ module.exports = {
       ],
     },
   },
+  ignore: ['src/*.d.ts'],
 }

@@ -1,6 +1,6 @@
 {
   "name": "tanqq-rollup-pack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "exports": {
     ".": {
@@ -8,10 +8,8 @@
       "import": "./dist/es/index.ts"
     }
   },
-  "type": "module",
   "main": "dist/index.ts",
   "module": "dist/es/index.ts",
-  "types": "",
   "directories": {},
   "files": [
     "dist",
@@ -19,15 +17,14 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "npm run test && npm run build:all && npm run ts",
+    "prepublishOnly": "npm run test && npm run clean && npm run build:all && npm run ts",
     "build": "babel --out-dir dist/es --extensions .ts src",
+    "build:cjs": "babel --out-file dist/bundle.js --extensions .ts src",
     "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly",
-    "build:tsup": "tsup src/index.ts --format cjs,esm --dts",
     "test": "jest",
     "clean": "rimraf -rf ./dist",
-    "build:clean:all": "rimraf -rf node_modules",
-    "build:cjs": "rollup ./dist/es/index.js --dir ./dist/ --format cjs",
-    "build:all": "npm run clean &&  npm run build &  npm run build:cjs"
+    "rollup:cjs": "rollup -c --bundleConfigAsCjs",
+    "build:all": "npm run build &  npm run rollup:cjs"
   },
   "keywords": [],
   "author": "",
@@ -52,10 +49,9 @@
     "jest": "^27.5.1",
     "prettier": "^2.7.1",
     "rollup": "^3.19.1",
-    "tsup": "^6.6.3",
-    "typescript": "^4.8.0"
+    "typescript": "^4.9.5"
   },
   "engines": {
-    "node": ">=14.16.1"
+    "node": ">=14.18.0"
   }
 }

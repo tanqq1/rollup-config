@@ -18,6 +18,7 @@
     "strictPropertyInitialization": true,
     "allowUnreachableCode": false,
     "alwaysStrict": true,
+    "outDir": "src/"
   },
   "files": ["src/**"],
   "include": [
