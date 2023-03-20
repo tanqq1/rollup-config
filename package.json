@@ -1,15 +1,15 @@
 {
   "name": "tanqq-rollup-pack",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "",
   "exports": {
     ".": {
-      "require": "./dist/index.ts",
-      "import": "./dist/es/index.ts"
+      "require": "./dist/index.js",
+      "import": "./dist/es/index.mjs"
     }
   },
-  "main": "dist/index.ts",
-  "module": "dist/es/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/es/index.mjs",
   "directories": {},
   "files": [
     "dist",
@@ -18,13 +18,12 @@
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "npm run test && npm run clean && npm run build:all && npm run ts",
-    "build": "babel --out-dir dist/es --extensions .ts src",
-    "build:cjs": "babel --out-file dist/bundle.js --extensions .ts src",
+    "build": "babel --out-dir dist/es --extensions .ts --out-file-extension .mjs src",
     "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly",
     "test": "jest",
     "clean": "rimraf -rf ./dist",
-    "rollup:cjs": "rollup -c --bundleConfigAsCjs",
-    "build:all": "npm run build &  npm run rollup:cjs"
+    "rollup:cjs": "rollup -c",
+    "build:all": "npm run build & npm run rollup:cjs"
   },
   "keywords": [],
   "author": "",

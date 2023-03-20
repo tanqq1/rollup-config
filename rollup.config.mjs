@@ -2,7 +2,7 @@
 // import babel from '@rollup/plugin-babel'
 
 export default {
-  input: 'dist/es/index.js',
+  input: 'dist/es/index.mjs',
   output: {
     file: 'dist/index.js',
     format: 'cjs',
