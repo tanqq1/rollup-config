@@ -19,8 +19,8 @@ module.exports = {
         modules: false,
         // useBuiltIns 设置成 usage，如果是 hera 或者 qidian 使用，可以
         //  设置成 false 因为在项目中加载了 core-js 的全部内容
-        useBuiltIns: false,
-        // useBuiltIns: 'usage',
+        // useBuiltIns: false,
+        useBuiltIns: 'entry',
         debug: false,
         // 默认走 chrome 43
         targets: {
@@ -28,7 +28,7 @@ module.exports = {
         },
         // modules: 'commonjs',
         // 配套安装 core-js@3.9.0
-        // corejs: 3,
+        corejs: 3,
       },
     ],
     ['@babel/preset-typescript'],
@@ -47,5 +47,4 @@ module.exports = {
       ],
     },
   },
-  ignore: ['src/*.d.ts'],
 }

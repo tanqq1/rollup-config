@@ -10,19 +10,16 @@
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "declaration": true,
-    // babel 已经生成js， 这里值生成.d.ts文件即可
-    "emitDeclarationOnly": true,
+    // "emitDeclarationOnly": true, // babel 已经生成js， 这里值生成.d.ts文件即可
+    "declarationDir": "./types",
     "exactOptionalPropertyTypes": true, // 可选属性必须赋予明确的值，不可以赋值 undefined
-    // "declarationDir": "./src",
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "allowUnreachableCode": false,
     "alwaysStrict": true,
-    "outDir": "src/"
   },
-  "files": ["src/**"],
   "include": [
-    "src/"
+    "./src/"
   ],
-  "exclude": ["src/**.d.ts"]
+  "exclude": ["./src/**.d.ts"]
 }

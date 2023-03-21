@@ -1,29 +1,32 @@
 {
   "name": "tanqq-rollup-pack",
-  "version": "1.0.5",
+  "version": "1.0.10",
   "description": "",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/es/index.mjs"
+      "require": "./lib/index.js",
+      "import": "./es/index.js"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/es/index.mjs",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "types": "./types/index.d.ts",
   "directories": {},
   "files": [
-    "dist",
-    "lib"
+    "es",
+    "lib",
+    "src",
+    "types"
   ],
   "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "npm run test && npm run clean && npm run build:all && npm run ts",
-    "build": "babel --out-dir dist/es --extensions .ts --out-file-extension .mjs src",
-    "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly",
+    "prepublishOnly": "npm run clean && npm run test && npm run build && npm run ts",
+    "build:commonjs": "rollup -c --bundleConfigAsCjs",
+    "build:es": "babel  src -d  es --extensions .ts",
+    "build": "npm run build:es & npm run build:commonjs",
+    "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly --outDir types",
     "test": "jest",
-    "clean": "rimraf -rf ./dist",
-    "rollup:cjs": "rollup -c",
-    "build:all": "npm run build & npm run rollup:cjs"
+    "clean": "rimraf -rf es lib types"
   },
   "keywords": [],
   "author": "",
@@ -38,7 +41,9 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-typescript": "^7.17.12",
     "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
     "@types/jest": "^27.5.1",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
@@ -48,6 +53,7 @@
     "jest": "^27.5.1",
     "prettier": "^2.7.1",
     "rollup": "^3.19.1",
+    "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.9.5"
   },
   "engines": {
