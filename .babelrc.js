@@ -3,12 +3,12 @@
 module.exports = {
   plugins: [
     [
-      '@babel/transform-runtime',
+      '@babel/plugin-transform-runtime',
       {
-        regenerator: false,
-        helpers: true,
-        // corejs 设置成 false，自己可控使用，不用担心 pollute global
-        corejs: false,
+        regenerator: true,
+        // helpers: true, // 默认值
+        // corejs 设置成 false，自己可控使用，不用担心 pollute global, 默认值
+        // corejs: false,
       },
     ],
   ],
@@ -20,7 +20,7 @@ module.exports = {
         // useBuiltIns 设置成 usage，如果是 hera 或者 qidian 使用，可以
         //  设置成 false 因为在项目中加载了 core-js 的全部内容
         // useBuiltIns: false,
-        useBuiltIns: 'entry',
+        useBuiltIns: 'usage',
         debug: false,
         // 默认走 chrome 43
         targets: {

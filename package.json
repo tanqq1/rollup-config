@@ -1,6 +1,6 @@
 {
   "name": "tanqq-rollup-pack",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "",
   "exports": {
     ".": {
@@ -21,8 +21,8 @@
   "sideEffects": false,
   "scripts": {
     "prepublishOnly": "npm run clean && npm run test && npm run build && npm run ts",
-    "build:commonjs": "rollup -c --bundleConfigAsCjs",
-    "build:es": "babel  src -d  es --extensions .ts",
+    "build:commonjs": "rollup -c",
+    "build:es": "babel src -d  es --extensions .ts",
     "build": "npm run build:es & npm run build:commonjs",
     "ts": "tsc src/index.ts  --declaration --emitDeclarationOnly --outDir types",
     "test": "jest",
@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@babel/cli": "7.12.13",
-    "@babel/core": "7.12.13",
-    "@babel/plugin-transform-runtime": "^7.12.13",
+    "@babel/core":"7.21.3",
+    "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-typescript": "^7.17.12",
     "@rollup/plugin-babel": "^6.0.3",
