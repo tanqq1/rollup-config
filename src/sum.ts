@@ -21,10 +21,14 @@ function noUsedFn() {
   const a = 90
 }
 
-export async function asyncFn() {
-  const data = await promiseFn
-  console.log('data...', data)
-}
+export const repAllStr = 'tanQingQing'.replaceAll('', '-')
 
-export const tName = SAT ?? 'aha'
+export const weakMapData = new WeakMap()
+
+// export async function asyncFn() {
+//   const data = await promiseFn
+//   console.log('data...', data)
+// }
+
+// export const tName = SAT ?? 'aha'
 export default sum
