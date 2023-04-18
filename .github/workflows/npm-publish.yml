@@ -8,21 +8,22 @@ on:
     branches: [workflow-test]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install
-      - run: npm test
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-node@v3
+#         with:
+#           node-version: 16
+#       - run: npm install
+#       - run: npm test
 
   publish-verify-file:
     runs-on: ubuntu-latest
     steps:
       - run: echo "run git diff"
-      - run: diff_files = git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
+      - run: echo $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
+      - run: git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
       - run: echo $diff_files
 
   # publish-npm:
