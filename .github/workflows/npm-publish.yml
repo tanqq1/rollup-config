@@ -8,22 +8,23 @@ on:
     branches: [workflow-test]
 
 jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 16
-#       - run: npm install
-#       - run: npm test
+  #   build:
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #       - uses: actions/checkout@v3
+  #       - uses: actions/setup-node@v3
+  #         with:
+  #           node-version: 16
+  #       - run: npm install
+  #       - run: npm test
 
   publish-verify-file:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: git branch
-      - run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+      # - run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+      - run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -E "package.json" | while read -r line | echo ${line}
 
   # publish-npm:
   #   needs: build
