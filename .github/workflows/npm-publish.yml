@@ -21,6 +21,7 @@ jobs:
   publish-verify-file:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: echo "run git diff"
       - run: echo ${{github.event.before}} ${{github.sha}}
       - run: git branch
