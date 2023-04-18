@@ -25,7 +25,8 @@ jobs:
       - run: echo "run git diff"
       - run: echo ${{github.event.before}} ${{github.sha}}
       - run: git branch
-      - run: echo git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+      - run: git diff-tree --no-commit-id --name-only -r ${{ github.sha }} >> test.txt
+      - run: tail +0 test.txt
 #      - run: git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
 #      - run: echo $diff_files
 
