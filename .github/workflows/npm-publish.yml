@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "run git diff"
-      - run: echo $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
-      - run: git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
-      - run: echo $diff_files
+      - run: echo ${{github.event.before}} ${{github.sha}}
+#      - run: git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
+#      - run: echo $diff_files
 
   # publish-npm:
   #   needs: build
