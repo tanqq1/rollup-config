@@ -18,12 +18,12 @@ jobs:
       - run: npm install
       - run: npm test
 
-    publish-verify-file:
-      runs-on: ubuntu-latest
-      steps:
-        - echo 'run git diff'
-        - run: diff_files = git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
-        - echo $diff_files
+  publish-verify-file:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "run git diff"
+      - run: diff_files = git diff-tree --name-only --no-commit-id $CI_MERGE_REQUEST_TARGET_BRANCH_SHA
+      - run: echo $diff_files
 
   # publish-npm:
   #   needs: build
