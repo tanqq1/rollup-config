@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: git branch
-      - run: bash  tanqq1/rollup-config/.github/shells/verify-package-verison-modified.sh  ${{ github.sha }}
+      - run: bash  ./.github/shells/verify-package-verison-modified.sh  ${{ github.sha }}
 
   publish-npm:
     needs: [build,publish-verify-file]
