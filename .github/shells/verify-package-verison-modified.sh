@@ -7,12 +7,15 @@ LIGHT_CYAN='\033[1;36m'
 
 COMMIT_SHA=$1
 
-echo  $COMMIT_SHA
-
 # if git diff --name-only HEAD~2 | grep -q -E "package.json"; then
 #     echo "The 'package.json' file has been modified in the last two commits"
 # else
 #     echo "The 'package.json' file has not been modified in the last two commits"
+# if git diff --name-only HEAD~2 | grep -q -E "package.json|changelog.md"; then
+#   echo "The 'package.json' or 'changelog.md' file has been modified in the last two commits"
+# else
+#   echo "The 'package.json' or 'changelog.md' file has not been modified in the last two commits"
+# fi
  git diff-tree --no-commit-id --name-only -r $COMMIT_SHA | grep -E "package.json" | while read -r line ; do
  git diff --name-only HEAD~2 | grep -E "package.json" | while read -r line ; do
     echo -e "$LIGHT_CYAN Processing $line"
@@ -22,10 +25,3 @@ echo  $COMMIT_SHA
       continue
     fi
 done
-
-
-# if git diff --name-only HEAD~2 | grep -q -E "package.json|changelog.md"; then
-#   echo "The 'package.json' or 'changelog.md' file has been modified in the last two commits"
-# else
-#   echo "The 'package.json' or 'changelog.md' file has not been modified in the last two commits"
-# fi
