@@ -13,7 +13,6 @@ echo  $COMMIT_SHA
 #     echo "The 'package.json' file has been modified in the last two commits"
 # else
 #     echo "The 'package.json' file has not been modified in the last two commits"
-fi
  git diff-tree --no-commit-id --name-only -r $COMMIT_SHA | grep -E "package.json" | while read -r line ; do
  git diff --name-only HEAD~2 | grep -E "package.json" | while read -r line ; do
     echo -e "$LIGHT_CYAN Processing $line"
