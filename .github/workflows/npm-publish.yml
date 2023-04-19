@@ -5,7 +5,7 @@ name: package_publish
 
 on:
   push:
-    branches: [master]
+    branches: [workflow-test]
 
 jobs:
   build:
@@ -18,8 +18,16 @@ jobs:
       - run: npm install
       - run: npm test
 
-  publish-npm:
+  publish-verify-file:
+    runs-on: ubuntu-latest
     needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - run: git branch
+      - run: bash  ./.github/shells/verify-package-verison-modified.sh  ${{ github.sha }}
+
+  publish-npm:
+    needs: [build,publish-verify-file]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,6 +36,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm install
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
