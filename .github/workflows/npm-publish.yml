@@ -5,7 +5,7 @@ name: package_publish
 
 on:
   push:
-    branches: [workflow-test]
+    branches: master
 
 jobs:
   build:
