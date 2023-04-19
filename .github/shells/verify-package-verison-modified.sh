@@ -5,7 +5,9 @@ RED='\033[0;31m'
 BROWN_ORANGE='\033[0;33m'     
 LIGHT_CYAN='\033[1;36m'
 
-COMMIT_SHA = $1
+COMMIT_SHA=$1
+
+echo  $COMMIT_SHA
 
 # if git diff --name-only HEAD~2 | grep -q -E "package.json"; then
 #     echo "The 'package.json' file has been modified in the last two commits"
