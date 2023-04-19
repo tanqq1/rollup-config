@@ -29,5 +29,5 @@ node_modules
 .cache
 *.yml
 nginx.conf
-*.sh
+# *.sh
 *.ps1
