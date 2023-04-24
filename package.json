@@ -20,6 +20,7 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "prepare": "husky install",
     "prepublishOnly": "npm run clean && npm run test && npm run build && npm run ts",
     "build:commonjs": "rollup -c",
     "build:es": "babel src -d  es --extensions .ts",
@@ -36,7 +37,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.12.13",
-    "@babel/core":"7.21.3",
+    "@babel/core": "7.21.3",
     "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-typescript": "^7.17.12",
@@ -50,6 +51,7 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
     "jest": "^27.5.1",
     "prettier": "^2.7.1",
     "rollup": "^3.19.1",

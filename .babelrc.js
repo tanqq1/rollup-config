@@ -21,7 +21,7 @@ module.exports = {
         },
         // modules: 'commonjs',
         // 如果没有指定,则默认corejs2
-        // corejs: 3.9,
+        corejs: 3.9,
       },
     ],
     ['@babel/preset-typescript'],
