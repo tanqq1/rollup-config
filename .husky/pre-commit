@@ -5,4 +5,4 @@
 # https://github.com/typicode/husky/issues/1134
 # https://github.com/okonet/lint-staged/issues/693#issuecomment-1079759224
 
-npx --no-install lint-staged
+npx  lint-staged
