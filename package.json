@@ -36,7 +36,7 @@
     "core-js": "^3.9.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "eslint"
     ],
     "**/*.{json,css,scss,md}": [
