@@ -16,6 +16,8 @@ export function promiseFn() {
     resolve(43)
   })
 }
+const a = 23
+a == 45
 
 function noUsedFn() {
   const a = 90
